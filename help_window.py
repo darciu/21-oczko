@@ -1,4 +1,5 @@
 from PyQt4.QtGui import *
+from PyQt4.QtCore import *
 
 
 class HelpWindow(QMainWindow):
@@ -18,6 +19,8 @@ class HelpWindow(QMainWindow):
         self.rules_grid = QGridLayout()
 
         self.label1 = QLabel('Oczko - 21')
+        self.label1.setAlignment(Qt.AlignCenter|Qt.AlignTop)
+
         self.label2 = QLabel('Rules of the game:\n\n\n\n'
                              '1. Collect points based on card\'s figure. Pull cards from the deck or stop the card.\n\n'
                              '2. If you exceed 21 points, you loose. One and only exception is when you pull two aces in the row (22 points).\n\n'
@@ -25,7 +28,9 @@ class HelpWindow(QMainWindow):
                              '4. If both of them have the same amount of points there is a draw.\n\n'
                              '5. If both players stop pulling the card, one after another, this means game is over\n\n'
                              '6. There are 9 turns - \'deals\'. Player with higher score, wins.')
+
         self.label3 = QLabel('Created by D.G. 2018')
+        self.label3.setAlignment(Qt.AlignRight|Qt.AlignBottom)
 
         self.rules_grid.addWidget(self.label1, 0, 0)
         self.rules_grid.addWidget(self.label2,1,0)

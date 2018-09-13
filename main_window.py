@@ -15,7 +15,7 @@ class mainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle('Oczko 21')
-        self.setGeometry(400,60,700,650)
+        self.setGeometry(400,40,700,640)
         self.create_welcome_layout()
         self.stacked_layout = QStackedLayout()
         self.stacked_layout.addWidget(self.welcome_widget)
@@ -144,7 +144,9 @@ class mainWindow(QMainWindow):
     def create_game_layout(self, player_type):
 
         self.player1_points = QLabel('0')
+        self.player1_points.setAlignment(Qt.AlignTop)
         self.player2_points = QLabel('0')
+        self.player2_points.setAlignment(Qt.AlignTop)
 
         self.player1_name = QLabel(self.player1_line_edit.text())
 
@@ -155,7 +157,9 @@ class mainWindow(QMainWindow):
 
 
         self.points1_label = QLabel('Points:')
+        self.points1_label.setAlignment(Qt.AlignBottom)
         self.points2_label = QLabel('Points:')
+        self.points2_label.setAlignment(Qt.AlignBottom)
 
         self.player1_card = QLabel()
         self.player2_card = QLabel()
@@ -167,21 +171,27 @@ class mainWindow(QMainWindow):
         self.pull_button_player2 = QPushButton('Pull')
 
         self.new_deal_button = QPushButton('New Deal')
-        self.information_field = QPlainTextEdit('Log here baby')
 
-        self.table = QTableWidget()
-        self.table.setRowCount(10)
-        self.table.setColumnCount(2)
+        self.information_field = QPlainTextEdit('Log here baby')
+        self.information_field.setMaximumHeight(243)
+        self.information_field.setMaximumWidth(200)
 
 
         #Buttons connection
+
         self.stop_button_player1.clicked.connect(lambda: self.stop_card_player1(player_type))
+        self.stop_button_player1.setMinimumHeight(30)
         self.pull_button_player1.clicked.connect(lambda: self.pull_card_player1(player_type))
+        self.pull_button_player1.setMinimumHeight(30)
 
         self.stop_button_player2.clicked.connect(self.stop_card_player2)
+        self.stop_button_player2.setMinimumHeight(30)
         self.pull_button_player2.clicked.connect(self.pull_card_player2)
+        self.pull_button_player2.setMinimumHeight(30)
 
         self.new_deal_button.clicked.connect(self.new_deal)
+        self.new_deal_button.setMaximumWidth(90)
+        self.new_deal_button.setMinimumHeight(80)
 
         #Table
 
@@ -190,6 +200,8 @@ class mainWindow(QMainWindow):
         self.table.setColumnCount(2)
         self.table.setHorizontalHeaderLabels(("{0};{1};").format(self.player1_name.text(),self.player2_name.text()).split(";"))
         self.table.setVerticalHeaderLabels(("1;2;3;4;5;6;7;8;9;10;SUM").split(";"))
+        self.table.setMaximumHeight(355)
+        self.table.setMaximumWidth(237)
 
         #Grids definitions
 
@@ -259,6 +271,7 @@ class mainWindow(QMainWindow):
         self.table_grid.addWidget(self.table, 0, 0)
         self.table_grid.addLayout(self.below_table_grid,1,0)
 
+
         self.main_game_grid.addLayout(self.board_grid,0,0)
         self.main_game_grid.addLayout(self.table_grid, 0, 1)
 
@@ -271,7 +284,6 @@ class mainWindow(QMainWindow):
     def cancel(self):
 
         self.stacked_layout.setCurrentIndex(0)
-        self.textbox.setText('0')
 
     def start_new_game(self):
 
