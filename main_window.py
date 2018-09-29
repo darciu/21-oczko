@@ -4,6 +4,7 @@ from PyQt4.QtCore import *
 
 import time
 import random
+import os
 
 from help_window import *
 from radio_button_class import *
@@ -112,7 +113,15 @@ class mainWindow(QMainWindow):
 
 
         self.cancel_button = QPushButton('Cancel')
+        self.cancel_button.setMaximumWidth(330)
+        self.cancel_button.setMinimumWidth(330)
+        self.cancel_button.setMinimumHeight(60)
+
         self.start_button = QPushButton('Start New Game')
+        self.start_button.setMaximumWidth(330)
+        self.start_button.setMinimumWidth(330)
+        self.start_button.setMinimumHeight(60)
+
 
         self.start_button.clicked.connect(self.start_new_game)
         self.cancel_button.clicked.connect(self.cancel)
@@ -329,7 +338,7 @@ class mainWindow(QMainWindow):
 
     def pull_card_player1(self,player_type):
         #card pixmap
-        self.pixmap1 = QPixmap('karty\{0}.png'.format(self.deck.pack[self.turn]))
+        self.pixmap1 = QPixmap(os.path.join('karty','{0}.png').format(self.deck.pack[self.turn]))
         self.pixmap1 = self.pixmap1.scaledToWidth(180)
         self.player1_card.setPixmap(self.pixmap1)
 
@@ -378,7 +387,7 @@ class mainWindow(QMainWindow):
 
     def pull_card_player2(self):
         #card pixmap
-        self.pixmap2 = QPixmap('karty\{0}.png'.format(self.deck.pack[self.turn]))
+        self.pixmap2 = QPixmap(os.path.join('karty','{0}.png').format(self.deck.pack[self.turn]))
         self.pixmap2 = self.pixmap2.scaledToWidth(180)
         self.player2_card.setPixmap(self.pixmap2)
 
@@ -603,7 +612,7 @@ def main():
     window = mainWindow()
     window.show()
     window.raise_()
-    app.exec()
+    app.exec_()
 
 if __name__ == '__main__':
     main()
