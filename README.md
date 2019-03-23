@@ -8,7 +8,8 @@ Choose whether you want to play with NPC or with your friend. Pull or Stop the c
 ## Prerequisites
 
 This code was written in Python ver. 3.6
-Please install PyQt4
+Additional modules required to be installed:
+- PyQt5
 
 ## Start up
 

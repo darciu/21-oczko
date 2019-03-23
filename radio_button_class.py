@@ -1,5 +1,5 @@
-from PyQt4.QtGui import *
-import sys
+from PyQt5.QtWidgets import QWidget, QGroupBox, QButtonGroup, QRadioButton, QVBoxLayout, QLabel
+
 
 class RadioButton(QWidget):
     def __init__(self, label, button_list):

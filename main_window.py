@@ -1,12 +1,16 @@
 import sys
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+from PyQt5.QtWidgets import (QMainWindow, QStackedLayout, QWidget, QAction, QApplication, QMessageBox, QLabel, QLineEdit,QVBoxLayout,
+                             QPushButton, QGridLayout, QPlainTextEdit, QTableWidgetItem, QTableWidget)
+
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QPixmap
+
 
 import time
 import random
 import os
 
-from help_window import *
+from help_window import HelpWindow
 from radio_button_class import *
 from deck import *
 
